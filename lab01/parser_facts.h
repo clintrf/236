@@ -11,7 +11,7 @@ using namespace std;
 class Facts{
     public:
     Facts(Lexer* lex);
-    ~Facts(){};
+    ~Facts();
     string toString();
     
     vector<Fact*> factsVec;

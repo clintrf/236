@@ -11,7 +11,7 @@ using namespace std;
 class Id:public Parameter{
     public:
     Id(Lexer* lex);
-    ~Id(){};
+    virtual ~Id(){};
     string toString();
     
     Token id;

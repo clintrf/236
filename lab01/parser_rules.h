@@ -12,7 +12,7 @@ using namespace std;
 class Rules{
     public:
     Rules(Lexer* lex);
-    ~Rules(){};
+    ~Rules();
     string toString();
     
     vector<Rule*> rulesVec;

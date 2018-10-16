@@ -1,4 +1,6 @@
-#pragma once
+#ifndef LEXER_LEXER_H
+#define LEXER_LEXER_H
+
 #include "lexer_token.h"
 #include <vector>
 #include <iostream>
@@ -16,6 +18,7 @@ public:
     ~Lexer(){};
     void analysisFile();
     string print();
+    //string printP();
     
     string typeToString(tokenTypeDef typeDef);
     string single_line_comment();
@@ -34,15 +37,25 @@ public:
     int getCurrLineNum();
     
     bool setEofFlag();
+    vector<Token> getTokenList();
     tokenTypeDef gettokenTypeDef(tokenTypeDef typeTemp);
     
     map<string, tokenTypeDef> keywords = {{"Schemes", SCHEMES}, {"Facts", FACTS}, {"Rules", RULES}, {"Queries", QUERIES}};
     
-private:
-    vector<Token> tokenList;                      //list of all the tokens found
+    //funtion for Lab 2
+    Token getNextToken(tokenTypeDef tokenType);
+    //vector<Token*> pTokenList();
+    void clearComments();
+    
+
+    vector<Token> tokenList;//list of all the tokens found
+    //vector<Token*> tokenP;//list of all the tokens found
     istream* inFile;
     
+private:    
     int lineCounter = 0;
     int currLineNum = 1;
     bool eofFlag = false;
 };
+
+#endif

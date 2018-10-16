@@ -56,30 +56,83 @@ int main(int argc, char* argv[]){
 //     //output.close;
      
      
+    // ifstream input;
+    // ofstream output;
+    // string fileName;
+    // char fileNumber;
+    
+    // input.open (argv[1]);
+    // fileName = argv[1];
+    
+    // cout << "ERROR" << endl;
+    // Lexer lex = Lexer(&input);
+    // Parser parsed = Parser(&lex);
+    // //cout << scan1.print() << endl;
+    
+    // fileNumber = fileName[8];
+    // fileName = "01_testOut.";
+    // fileName += fileNumber;
+    // fileName += ".txt";
+    
+    // output.open(fileName);
+    // output << parsed.toString();
+    // //printDomain()
+    // //input.close;
+    // //output.close;
+    
+    
     ifstream input;
     ofstream output;
     string fileName;
     char fileNumber;
     
-    input.open (argv[1]);
+    //input.open (argv[1]);
     fileName = argv[1];
     
+    try{
+        if(argc > 0){
+            input.open (argv[1]);
+            if(!input.good()){
+                cout << "Error opening file " << endl;
+                return 0;
+            }
+
+            fileNumber = fileName[8];
+            fileName = "01_testOut.";
+            fileName += fileNumber;
+            fileName += ".txt"; 
+            
+            Lexer lex = Lexer(&input);
+            Parser parsed = Parser(&lex);
+            
+            output.open(fileName);
+            output << parsed.toString();
+            
+            // real thing == cout << parsed.toString();
+            
+            //DatalogProgram datalogProgram = DatalogProgram(lex);
+        }
+
+		
+		//cout << datalogProgram.toString() << endl
+        //Parser parse = Parser(lex.getTokens());
+        //DatalogProgram* parsed = parse.datalogParsing();
+        //cout << parsed->toString();
+        //delete parsed;
+    } catch(Token token) {
+        
+        output.open(fileName);
+        output << "Failure!" << endl;
+        output << "  " << token.toString();
+        
+        // pass off cout << "Failure!" << endl;
+        // pass off cout << "  " << token.toString();
+    }
     
-    Lexer lex = Lexer(&input);
-    Parser parsed = Parser(&lex);
-    //cout << scan1.print() << endl;
-    
-    fileNumber = fileName[8];
-    fileName = "01_testOut.";
-    fileName += fileNumber;
-    fileName += ".txt";
-    
-    output.open(fileName);
-    output << parsed.toString();
-    //printDomain()
+    //output.open("outText00.txt");
+    //output << scan1.print();
     //input.close;
     //output.close;
-    
     
      
     

@@ -11,7 +11,7 @@ using namespace std;
 class Schemes{
     public:
     Schemes(Lexer* lex);
-    ~Schemes(){};
+    ~Schemes();
     string toString();
     
     vector<Scheme*> schemesVec;

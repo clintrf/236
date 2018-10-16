@@ -10,7 +10,7 @@ using namespace std;
 class Queries{
     public:
     Queries(Lexer* lex);
-    ~Queries(){};
+    ~Queries();
     
     string toString();
     

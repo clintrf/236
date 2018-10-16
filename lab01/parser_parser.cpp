@@ -17,7 +17,13 @@ Parser::Parser(Lexer* lex){
     myQueries = new Queries(lex);
     (lex)->getNextToken(END_OF_FILE);
     
-    
+}
+
+Parser::~Parser(){
+	delete myQueries;
+	delete mySchemes;
+    delete myFacts;
+    delete myRules;
 }
 
 string Parser::toString(){
@@ -68,8 +74,8 @@ string Parser::printDomain(){
 }
 
 void Parser::domainAdd(Lexer* lex){
-        for(int i = 0; i < myFacts->factsVec.size(); i++){
-            for(int  j = 0; j < myFacts->factsVec[i]->factVec.size(); j++){
+        for(unsigned int i = 0; i < myFacts->factsVec.size(); i++){
+            for(unsigned int  j = 0; j < myFacts->factsVec[i]->factVec.size(); j++){
                 domain.insert(myFacts->factsVec[i]->factVec[j]->myStringToken.getTokenValue());
             }
         }

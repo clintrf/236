@@ -8,9 +8,15 @@ Queries::Queries(Lexer* lex){
     } while ((lex)->tokenList.back().getTokenType() == ID);
 }
 
+Queries::~Queries(){
+    for (unsigned int i = 0;i < queriesVec.size(); i++){
+        delete queriesVec[i];
+    }
+}
+
 string Queries::toString(){
     stringstream ss;
-    for (int i = 0;i < queriesVec.size(); i++){
+    for (unsigned int i = 0;i < queriesVec.size(); i++){
         ss << "  " << this->queriesVec[i]->myQueriesPredicate->toString();
         ss << "?" << endl;
     }

@@ -10,7 +10,7 @@ using namespace std;
 class Scheme{
     public:
     Scheme(Lexer* lex);
-    ~Scheme(){};
+    ~Scheme();
     
     Id* schemeId;
     vector<Id*> columnNames; //not empty

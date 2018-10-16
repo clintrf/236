@@ -11,12 +11,19 @@ Facts::Facts(Lexer* lex){
     } 
 }
 
+Facts::~Facts(){
+    for (unsigned int i = 0;i < factsVec.size(); i++){
+        delete factsVec[i];
+    }
+}
+
+
 string Facts::toString(){
     stringstream ss;
-    for (int i = 0;i < factsVec.size(); i++){
+    for (unsigned int i = 0;i < factsVec.size(); i++){
         ss << "  " << this->factsVec[i]->factId->id.getTokenValue() << "(";
         ss << this->factsVec[i]->factVec[0]->myStringToken.getTokenValue();
-        for(int j = 1; j < this->factsVec[i]->factVec.size(); j++){
+        for(unsigned int j = 1; j < this->factsVec[i]->factVec.size(); j++){
             
             if (j != this->factsVec[i]->factVec.size()){
                 ss<< ",";

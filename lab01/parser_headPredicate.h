@@ -10,7 +10,7 @@ using namespace std;
 class HeadPredicate{
     public:
     HeadPredicate(Lexer* lex);
-    ~HeadPredicate(){};
+    ~HeadPredicate();
     string toString();
     
     Id* headPredicateId;

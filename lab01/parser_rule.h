@@ -11,7 +11,7 @@ using namespace std;
 class Rule{
     public:
     Rule(Lexer* lex);
-    ~Rule(){};
+    ~Rule();
     
     string toString();
     

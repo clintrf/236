@@ -10,7 +10,7 @@ using namespace std;
 class Query:public Predicate{
     public:
     Query(Lexer* lex);
-    ~Query(){};
+    ~Query();
     
     Predicate* myQueriesPredicate;
     

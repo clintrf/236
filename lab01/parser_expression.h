@@ -14,7 +14,7 @@ class Expression:public Parameter{
     public:
     Expression(Lexer* lex);
     Expression(Parameter* a, tokenTypeDef b, Parameter* c);
-    ~Expression(){};
+    ~Expression();
     string toString();
     
     

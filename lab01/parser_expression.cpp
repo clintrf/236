@@ -9,6 +9,10 @@ Expression::Expression(Lexer* lex){
     //expressionParameter2 = Parameter->createParameter(lex);
     //(lex)->getNextToken(RIGHT_PAREN);
 }
+Expression::~Expression(){
+    delete expressionParameter1;
+    delete expressionParameter2;
+}
 Expression::Expression(Parameter* a, tokenTypeDef b, Parameter* c){
     
     this->expressionParameter1 = a;

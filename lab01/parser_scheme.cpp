@@ -13,3 +13,10 @@ Scheme::Scheme(Lexer* lex){
     }
     (lex)->getNextToken(RIGHT_PAREN);
 }
+
+Scheme::~Scheme(){
+    delete schemeId;
+    for (unsigned int i = 0;i < columnNames.size(); i++){
+        delete columnNames[i];
+    }
+}

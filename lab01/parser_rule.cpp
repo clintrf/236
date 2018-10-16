@@ -1,7 +1,7 @@
 #include "parser_rule.h"
 
 Rule::Rule(Lexer* lex){
-    ruleHeadPredicate = new HeadPredicate(lex);
+    this->ruleHeadPredicate = new HeadPredicate(lex);
     (lex)->getNextToken(COLON_DASH);
     
     ruleVec.push_back(new Predicate(lex));
@@ -15,6 +15,14 @@ Rule::Rule(Lexer* lex){
     (lex)->getNextToken(PERIOD);
 };
 
+Rule::~Rule(){
+    delete this->ruleHeadPredicate;
+    for (unsigned int i = 0;i < ruleVec.size(); i++){
+        delete ruleVec[i];
+    }   
+}
+
 string Rule::toString(){
-    
+    cout << "nothing in rule toString" << endl;
+    return 0;
 }

@@ -8,13 +8,18 @@ Rules::Rules(Lexer* lex){
         rulesVec.push_back(new Rule(lex));
     }
 };
-
+Rules::~Rules(){
+    for (unsigned int i = 0;i < rulesVec.size(); i++){
+        delete rulesVec[i];
+    }   
+}
+    
 string Rules::toString(){
     stringstream ss;
-    for (int i = 0; i < rulesVec.size(); i++){
+    for (unsigned int i = 0; i < rulesVec.size(); i++){
         ss << "  " << this->rulesVec[i]->ruleHeadPredicate->toString();
         ss << this->rulesVec[i]->ruleVec[0]->toString();
-        for(int j = 1; j < this->rulesVec[i]->ruleVec.size(); j++){
+        for(unsigned int j = 1; j < this->rulesVec[i]->ruleVec.size(); j++){
             
             if (j != this->rulesVec[i]->ruleVec.size()){
                 ss<< ",";

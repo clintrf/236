@@ -11,11 +11,18 @@ HeadPredicate::HeadPredicate(Lexer* lex){
     (lex)->getNextToken(RIGHT_PAREN);
 }
 
+HeadPredicate::~HeadPredicate(){
+    delete headPredicateId;
+    for (unsigned int i = 0;i < headPredicateIdVec.size(); i++){
+        delete headPredicateIdVec[i];
+    }   
+}
+
 string HeadPredicate::toString(){
     stringstream ss;
     ss << this->headPredicateId->id.getTokenValue() << "(";
     ss << this->headPredicateIdVec[0]->id.getTokenValue();
-    for(int i = 1; i < this->headPredicateIdVec.size(); i++){
+    for(unsigned int i = 1; i < this->headPredicateIdVec.size(); i++){
         if (i != this->headPredicateIdVec.size()){
             ss<< ",";
         }

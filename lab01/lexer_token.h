@@ -1,5 +1,8 @@
-#pragma once
+#ifndef LEXER_TOKEN_H
+#define LEXER_TOKEN_H
+
 #include <string>
+#include <map>
 using namespace std;
 
 enum tokenTypeDef {
@@ -26,6 +29,7 @@ enum tokenTypeDef {
 
 class Token{
     public:
+    	Token(){};
         Token(tokenTypeDef token_type, int token_line_num, string token_value);
         ~Token(){};
         
@@ -33,11 +37,15 @@ class Token{
         string getTokenValue();
         int getTokenLineNum();
         
-        string printTokens();
+        string toString();
 
+		map<string, tokenTypeDef> keywords = {{"Schemes", SCHEMES}, {"Facts", FACTS}, {"Rules", RULES}, {"Queries", QUERIES}};
+        string typeToString(tokenTypeDef typeDef);
         
         tokenTypeDef tokenType;
         string tokenValue;
         int tokenLineNum;
         
 };
+
+#endif

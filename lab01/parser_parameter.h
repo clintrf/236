@@ -13,7 +13,7 @@ class Parameter{
     public:
     Parameter(){};
     Parameter(Lexer* lex);
-    ~Parameter(){};
+    virtual ~Parameter(){};
     
     int stringFlag;
     int idFlag;

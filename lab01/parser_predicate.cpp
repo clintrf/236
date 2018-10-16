@@ -15,46 +15,56 @@ Predicate::Predicate(Lexer* lex){
     (lex)->getNextToken(RIGHT_PAREN);
 }
 
+Predicate::~Predicate(){
+    delete predicateId;
+    delete myPara;
+    delete myExp;
+    delete expressionParameter1;
+    delete expressionParameter2;
+    for (unsigned int i = 0;i < predicateVec.size(); i++){
+        delete predicateVec[i];
+    }
+}
+
 Parameter* Predicate::createParameter(Lexer* lex){
-    Parameter* myPara;
+    
     if((lex)->tokenList.back().getTokenType() == STRING){
-        myPara = new String(lex);
-        return myPara;
+        this->myPara = new String(lex);
+        return this->myPara;
     }
     else if ((lex)->tokenList.back().getTokenType() == ID){
-        myPara = new Id(lex);
-        return myPara;
+        this->myPara = new Id(lex);
+        return this->myPara;
     }
     else{
-        myPara = createExpression(lex);
-        return myPara;
+        this->myPara = createExpression(lex);
+        return this->myPara;
     }
     
 }
 
 Parameter* Predicate::createExpression(Lexer* lex){
-    Parameter* expressionParameter1;
+    
     tokenTypeDef expressionOperator;
-    Parameter* expressionParameter2;
-    Parameter* myExp;
+
     
     (lex)->getNextToken(LEFT_PAREN);
-    expressionParameter1 = createParameter(lex);
+    this->expressionParameter1 = createParameter(lex);
     expressionOperator = (lex)->tokenList.back().getTokenType();
     (lex)->tokenList.pop_back();
-    expressionParameter2 = createParameter(lex);
+    this->expressionParameter2 = createParameter(lex);
     (lex)->getNextToken(RIGHT_PAREN);
     
-    myExp = new Expression(expressionParameter1,expressionOperator,expressionParameter2);
+    this->myExp = new Expression(expressionParameter1,expressionOperator,expressionParameter2);
     
-    return myExp;
+    return this->myExp;
 }
 
 string Predicate::toString(){
     stringstream ss;
     ss << predicateId->id.getTokenValue() << "(";
     ss << predicateVec[0]->toString();
-    for (int i = 1;i < predicateVec.size(); i++){
+    for (unsigned int i = 1;i < predicateVec.size(); i++){
 
         if (i != predicateVec.size()){
             ss<< ",";

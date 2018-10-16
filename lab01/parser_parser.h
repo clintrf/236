@@ -29,7 +29,7 @@ class Parser{
     public:
     Parser(){};
     Parser(Lexer* lex);
-    ~Parser(){};
+    ~Parser();
     string toString();
     
     

@@ -39,12 +39,18 @@ Parameter* Parameter::createParameter(Lexer* lex){
     if((lex)->tokenList.back().getTokenType() == STRING){
 //        Parameter* myPara = new String(lex);
  //       return myPara;
+ cout << "error in parameter createParameter" << endl;
+ return 0;
     }
     else if ((lex)->tokenList.back().getTokenType() == ID){
         //return (new Id(lex));
+        cout << "error in parameter createParameter" << endl;
+        return 0;
     }
     else{
     //    parameterExpressionHead = new Expression(lex);
+    cout << "error in parameter createParameter" << endl;
+    return 0;
     }
 }
 

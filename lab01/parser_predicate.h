@@ -15,14 +15,19 @@ class Predicate {
   public:
   Predicate(){};
   Predicate(Lexer* lex);
-  ~Predicate(){};
+  virtual ~Predicate();
   
   string toString();
   
   
   Parameter* createParameter(Lexer* lex);
   Parameter* createExpression(Lexer* lex);
-  
+
+
+  Parameter* myExp;
+  Parameter* expressionParameter1;
+  Parameter* expressionParameter2;
+  Parameter* myPara;
   Id* predicateId;
   vector<Parameter*> predicateVec;
   

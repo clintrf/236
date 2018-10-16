@@ -14,3 +14,10 @@ Fact::Fact(Lexer* lex){
     (lex)->getNextToken(RIGHT_PAREN);
     (lex)->getNextToken(PERIOD);
 };
+
+Fact::~Fact(){
+    delete factId;
+    for (unsigned int i = 0;i < factVec.size(); i++){
+        delete factVec[i];
+    }       
+}

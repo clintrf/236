@@ -11,7 +11,7 @@ using namespace std;
 class Fact{
     public:
     Fact(Lexer* lex);
-    ~Fact(){};
+    ~Fact();
     
     Id* factId;
     vector<String*> factVec;
