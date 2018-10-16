@@ -106,7 +106,8 @@ int main(int argc, char* argv[]){
             Parser parsed = Parser(&lex);
             
             output.open(fileName);
-            output << parsed.toString();
+            //output << parsed.toString();          // for self testing
+            cout << parsed.toString();              //for pass off
             
             // real thing == cout << parsed.toString();
             
@@ -122,8 +123,12 @@ int main(int argc, char* argv[]){
     } catch(Token token) {
         
         output.open(fileName);
-        output << "Failure!" << endl;
-        output << "  " << token.toString();
+        
+        //output << "Failure!" << endl;             // for self testing
+        //output << "  " << token.toString();       // for self testing
+        
+        cout << "Failure!" << endl;
+        cout << "  " << token.toString();
         
         // pass off cout << "Failure!" << endl;
         // pass off cout << "  " << token.toString();
