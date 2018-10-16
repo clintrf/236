@@ -17,7 +17,6 @@ Lexer::Lexer(istream* fileName){
 
 void Lexer::analysisFile(){
   char currChar;
-
   while (true){
     currChar = this->inFile->get();
     if (this->inFile->eof()){
@@ -30,7 +29,6 @@ void Lexer::analysisFile(){
       }
       continue;
     }
-    
     switch(currChar){
       case ',':
         tokenList.push_back(Token(COMMA,getCurrLineNum(), ","));
@@ -48,15 +46,8 @@ void Lexer::analysisFile(){
         tokenList.push_back(Token(RIGHT_PAREN,getCurrLineNum(), ")"));
         break;
       case ':':
-        if(this->inFile->peek() == '-'){
-          this->inFile->get();
-          tokenList.push_back(Token(COLON_DASH,getCurrLineNum(), ":-"));
-          break;
-        }
-        else {
-          tokenList.push_back(Token(COLON,getCurrLineNum(), ":" ));
-          break;
-        }
+        colonCase();
+        break;
       case '*':
         tokenList.push_back(Token(MULTIPLY,getCurrLineNum(), "*"));
         break;
@@ -68,27 +59,10 @@ void Lexer::analysisFile(){
         correctCurrLineNum();
         break;
       case '#':
-        if (this->inFile->peek() == '|') {
-          this->inFile->get();
-          tokenList.push_back(Token(gettokenTypeDef(COMMENT),getCurrLineNum(), this->multi_line_comment()));
-        } 
-        else {
-          tokenList.push_back(Token(COMMENT,getCurrLineNum(), this->single_line_comment()));
-        }
-        correctCurrLineNum();
+        tagCase();
         break;
       default:
-        if(isalpha(currChar)){
-          this->inFile->putback(currChar);
-          string tempString = this->identifierString();
-          tokenTypeDef tempTokenType = identifierType(tempString);
-          tokenList.push_back(Token(tempTokenType,getCurrLineNum(), tempString));
-        }
-        else{
-          string undefinedString = "";
-          undefinedString += currChar;
-          tokenList.push_back(Token(UNDEFINED,getCurrLineNum(), undefinedString ));
-        }                
+        defaultIfCase(currChar);
         break;
     }
   }
