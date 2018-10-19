@@ -3,22 +3,20 @@
 
 #include "lexer_lexer.h"
 #include "parser_id.h"
+#include "parser_predicate.h"
 #include <string>
 #include <vector>
 using namespace std;
 
 class HeadPredicate{
     public:
-    HeadPredicate(Lexer* lex);
+    HeadPredicate(Lexer* lex, vector<Parameter*>* myVecParam);
     ~HeadPredicate();
     string toString();
     
     Id* headPredicateId;
     vector<Id*> headPredicateIdVec;
     
-//     is a Predicate
-// 	HeadPredicate(Lex lex)
-// 		calls: Predicate.predicate(lex)
 };
 
 #endif

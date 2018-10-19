@@ -3,19 +3,17 @@
 
 using namespace std;
 
-Facts::Facts(Lexer* lex){
+Facts::Facts(Lexer* lex, vector<Fact*>* myVecFact, vector<Parameter*>* myVecParam){
     (lex)->getNextToken(FACTS);
     (lex)->getNextToken(COLON);
     while ((lex)->tokenList.back().getTokenType() == ID){
-        factsVec.push_back(new Fact(lex));
+        Fact* f1 = new Fact(lex, myVecParam);
+        factsVec.push_back(f1);
+        myVecFact->push_back(f1);
     } 
 }
 
-Facts::~Facts(){
-    for (unsigned int i = 0;i < factsVec.size(); i++){
-        delete factsVec[i];
-    }
-}
+Facts::~Facts(){}
 
 
 string Facts::toString(){

@@ -284,7 +284,7 @@ vector<Token> Lexer::getTokenList(){
 Token Lexer::getNextToken(tokenTypeDef tokenType){
   Token result = tokenList.back();
   tokenTypeDef resultType = result.getTokenType();
-  if((resultType == EOF && tokenType != EOF) || resultType != tokenType){
+  if((resultType == END_OF_FILE && tokenType != END_OF_FILE) || resultType != tokenType){
   
     throw result;
   }

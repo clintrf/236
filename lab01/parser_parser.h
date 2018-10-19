@@ -4,24 +4,26 @@
 #include <iostream>
 #include "lexer_lexer.h"
 
+
+
 #include "parser_schemes.h"
 #include "parser_facts.h"
 #include "parser_rules.h"
 #include "parser_queries.h"
 
-// #include "datalogProgram.h"
-// #include "expression.h"
-// #include "headPredicate.h"
-// #include "id.h"
-// #include "parameter.h"
-// #include "predicate.h"
-// #include "string.h"
+#include "parser_scheme.h"
+#include "parser_fact.h"
+#include "parser_rule.h"
+#include "parser_query.h"
 
-// #include "scheme.h"
-// #include "fact.h"
-// #include "rule.h"
-// #include "query.h"
+#include "parser_predicate.h"
+#include "parser_headPredicate.h"
+#include "parser_parameter.h"
+
+
+
 #include <vector>
+
 
 using namespace std;
 
@@ -31,15 +33,24 @@ class Parser{
     Parser(Lexer* lex);
     ~Parser();
     string toString();
+
+    Schemes* mySchemes = NULL;
+    Facts* myFacts = NULL;
+    Rules* myRules = NULL;
+    Queries* myQueries = NULL;
     
-    
-    Schemes* mySchemes;
-    Facts* myFacts;
-    Rules* myRules;
-    Queries* myQueries;
+    vector<Scheme*> myVecScheme;
+    vector<Fact*> myVecFact;
+    vector<Rule*> myVecRule;
+    vector<Query*> myVecQuery;
+    vector<Predicate*> myVecPredicate;
+    vector<HeadPredicate*> myVecHeadPredicate;
+    vector<Parameter*> myVecParam;
     
     string printDomain();
+    int failFlag = 1;
     void domainAdd(Lexer* lex);
+    void clearMemory();
 };
 
 #endif

@@ -8,8 +8,6 @@
 #include <vector>
 using namespace std;
 
-//enum Operator {ADD, MULTIPLY};
-
 class Expression:public Parameter{
     public:
     Expression(Lexer* lex);
@@ -22,14 +20,6 @@ class Expression:public Parameter{
     Parameter* expressionParameter1;
     tokenTypeDef expressionOperator;
     Parameter* expressionParameter2;
-    
-    
-//     	Parameter parameter1
-// 	Operator operator
-// 	Parameter parameter2
-// 	Expression(Lex lex)
-// 		calls: Parameter.createParameter(lex)
-// enum Operator PLUS, STAR
     
 };
 #endif

@@ -6,14 +6,7 @@ Id::Id(Lexer* lex){
 }
  string Id::toString(){
     stringstream ss;
-    //ss << ',';
     ss << this->id.getTokenValue();
     return ss.str();
  }
  
-//  string Parameter::toString(){
-//     stringstream ss;
-//     ss << ',';
-//     ss << this->id.getTokenValue();
-//     return ss.str();
-//  }

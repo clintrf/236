@@ -3,19 +3,18 @@
 
 #include "lexer_lexer.h"
 #include "parser_id.h"
+#include "parser_parameter.h"
 #include <string>
 #include <vector>
 using namespace std;
 
 class Scheme{
     public:
-    Scheme(Lexer* lex);
+    Scheme(Lexer* lex, vector<Parameter*>* myVecParam);
     ~Scheme();
     
     Id* schemeId;
-    vector<Id*> columnNames; //not empty
-// 	Scheme(Lex lex)
-// 	calls:new Id(lex)
+    vector<Id*> columnNames;
 
 };
 

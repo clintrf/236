@@ -1,18 +1,20 @@
 #include "parser_rules.h"
 #include <string>
 
-Rules::Rules(Lexer* lex){
+Rules::Rules(Lexer* lex, vector<Rule*>* myVecRule,
+    vector<Predicate*>* myVecPredicate,
+    vector<HeadPredicate*>* myVecHeadPredicate,
+    vector<Parameter*>* myVecParam){
+        
     (lex)->getNextToken(RULES);
     (lex)->getNextToken(COLON);
     while ((lex)->tokenList.back().getTokenType() == ID) {
-        rulesVec.push_back(new Rule(lex));
+        Rule* r1 = new Rule(lex, myVecPredicate, myVecHeadPredicate, myVecParam);
+        this->rulesVec.push_back(r1);
+        myVecRule->push_back(r1);
     }
 };
-Rules::~Rules(){
-    for (unsigned int i = 0;i < rulesVec.size(); i++){
-        delete rulesVec[i];
-    }   
-}
+Rules::~Rules(){}
     
 string Rules::toString(){
     stringstream ss;

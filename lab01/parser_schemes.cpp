@@ -1,21 +1,21 @@
 #include "parser_schemes.h"
 #include <string>
 
+
 using namespace std;
 
-Schemes::Schemes(Lexer* lex){
+Schemes::Schemes(Lexer* lex, vector<Scheme*>* myVecScheme, vector<Parameter*>* myVecParam ){
     (lex)->getNextToken(SCHEMES);
     (lex)->getNextToken(COLON);
     do {
-        schemesVec.push_back(new Scheme(lex));
+        Scheme* s1 = new Scheme(lex,myVecParam);
+        schemesVec.push_back(s1);
+        myVecScheme->push_back(s1);
+        
     } while ((lex)->tokenList.back().getTokenType() == ID);
 }
 
-Schemes::~Schemes(){
-    for (unsigned int i = 0;i < schemesVec.size(); i++){
-        delete schemesVec[i];
-    }
-}
+Schemes::~Schemes(){}
 string Schemes::toString(){
     stringstream ss;
     for (unsigned int i = 0;i < schemesVec.size(); i++){

@@ -1,5 +1,5 @@
 #g++ -g -Wall -Werror -std=c++11 *.cpp -o lab;
-make;
+#make;
 ./parser 01_test.0.txt; echo 01_test.0.txt; diff -s 01_testKey.0.txt 01_testOut.0.txt;
 ./parser 01_test.1.txt; echo 01_test.1.txt; diff -s 01_testKey.1.txt 01_testOut.1.txt;
 ./parser 01_test.2.txt; echo 01_test.2.txt; diff -s 01_testKey.2.txt 01_testOut.2.txt;

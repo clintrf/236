@@ -4,22 +4,18 @@
 #include "lexer_lexer.h"
 #include "parser_string.h"
 #include "parser_id.h"
+#include "parser_parameter.h"
 #include <string>
 #include <vector>
 using namespace std;
 
 class Fact{
     public:
-    Fact(Lexer* lex);
+    Fact(Lexer* lex, vector<Parameter*>* myVecParam);
     ~Fact();
     
     Id* factId;
     vector<String*> factVec;
-    
-//     Id factId
-// 	vector<String> strings //not empty
-// 	Fact(Lex lex)
-// 		calls: new Id(lex)
-// 		calls: new String(lex)
+
 };
 #endif

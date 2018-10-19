@@ -3,21 +3,25 @@
 
 using namespace std;
 
-Fact::Fact(Lexer* lex){
+Fact::Fact(Lexer* lex, vector<Parameter*>* myVecParam){
+    
     factId = new Id(lex);
+    myVecParam->push_back(factId);
+    
     (lex)->getNextToken(LEFT_PAREN);
-    factVec.push_back(new String(lex));
+    String* s1 = new String(lex);
+    factVec.push_back(s1);
+    myVecParam->push_back(s1);
+    
+    
     while((lex)->tokenList.back().getTokenType() == COMMA){
         (lex)->tokenList.pop_back();
-        factVec.push_back(new String(lex));
+        String* s2 = new String(lex);
+        factVec.push_back(s2);
+        myVecParam->push_back(s2);
     }
     (lex)->getNextToken(RIGHT_PAREN);
     (lex)->getNextToken(PERIOD);
 };
 
-Fact::~Fact(){
-    delete factId;
-    for (unsigned int i = 0;i < factVec.size(); i++){
-        delete factVec[i];
-    }       
-}
+Fact::~Fact(){}

@@ -8,7 +8,6 @@ String::String(Lexer* lex){
 
 string String::toString(){
     stringstream ss;
-    //ss << ',';
     ss << this->myStringToken.getTokenValue();
     return ss.str();
 }

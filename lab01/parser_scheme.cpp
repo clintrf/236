@@ -3,20 +3,23 @@
 
 using namespace std;
 
-Scheme::Scheme(Lexer* lex){
+Scheme::Scheme(Lexer* lex, vector<Parameter*>* myVecParam){
     schemeId = new Id(lex);
+    myVecParam->push_back(schemeId);
+    
     (lex)->getNextToken(LEFT_PAREN);
-    columnNames.push_back(new Id(lex));
+    Id* i1 = new Id(lex);
+    columnNames.push_back(i1);
+    myVecParam->push_back(i1);
+    
     while((lex)->tokenList.back().getTokenType() == COMMA){
         (lex)->tokenList.pop_back();
-        columnNames.push_back(new Id(lex));
+        
+        Id* i2 = new Id(lex);
+        columnNames.push_back(i2);
+        myVecParam->push_back(i2);
     }
     (lex)->getNextToken(RIGHT_PAREN);
 }
 
-Scheme::~Scheme(){
-    delete schemeId;
-    for (unsigned int i = 0;i < columnNames.size(); i++){
-        delete columnNames[i];
-    }
-}
+Scheme::~Scheme(){}

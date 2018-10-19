@@ -1,18 +1,20 @@
 #include "parser_queries.h"
 
-Queries::Queries(Lexer* lex){
+Queries::Queries(Lexer* lex, vector<Query*>* myVecQuery,
+    vector<Predicate*>* myVecPredicate,
+    vector<Parameter*>* myVecParam){
+        
     (lex)->getNextToken(QUERIES);
     (lex)->getNextToken(COLON);
     do {
-        queriesVec.push_back(new Query(lex));
+        Query* q1 = new Query(lex, myVecPredicate, myVecParam);
+        queriesVec.push_back(q1);
+        myVecQuery->push_back(q1);
+        
     } while ((lex)->tokenList.back().getTokenType() == ID);
 }
 
-Queries::~Queries(){
-    for (unsigned int i = 0;i < queriesVec.size(); i++){
-        delete queriesVec[i];
-    }
-}
+Queries::~Queries(){}
 
 string Queries::toString(){
     stringstream ss;

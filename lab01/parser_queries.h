@@ -9,14 +9,15 @@ using namespace std;
 
 class Queries{
     public:
-    Queries(Lexer* lex);
+    Queries(Lexer* lex, vector<Query*>* myVecQuery,
+    vector<Predicate*>* myVecPredicate,
+    vector<Parameter*>* myVecParam);
     ~Queries();
     
     string toString();
     
     vector<Query*> queriesVec;
-// 	Queries(Lex lex)
-// 	calls: new Query(lex)
+
 };
 
 #endif

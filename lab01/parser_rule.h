@@ -2,30 +2,27 @@
 #define PARSER_RULE_H
 
 #include "lexer_lexer.h"
-#include "parser_headPredicate.h"
 #include "parser_predicate.h"
+#include "parser_headPredicate.h"
+#include "parser_parameter.h"
+
 #include <string>
 #include <vector>
 using namespace std;
 
 class Rule{
     public:
-    Rule(Lexer* lex);
+    Rule(Lexer* lex, vector<Predicate*>* myVecPredicate,
+    vector<HeadPredicate*>* myVecHeadPredicate,
+    vector<Parameter*>* myVecParam);
     ~Rule();
     
     string toString();
-    
-    //Id* ruleId;
-    HeadPredicate* ruleHeadPredicate;
+
+    HeadPredicate* ruleHeadPredicate = NULL;
     
     vector<Predicate*> ruleVec;
     
-    
-//     HeadPredicate head
-// 	vector<Predicate> predicates //not empty
-// 	Rule(Lex lex)
-// 		calls:new HeadPredicate(lex)
-// 		calls:new Predicate(lex)
 };
 
 #endif

@@ -9,16 +9,14 @@ using namespace std;
 
 class Query:public Predicate{
     public:
-    Query(Lexer* lex);
+    Query(Lexer* lex, vector<Predicate*>* myVecPredicate,
+    vector<Parameter*>* myVecParam);
     ~Query();
     
     Predicate* myQueriesPredicate;
     
     string toString();
-    
-//      Query is a Predicate
-// 	Query(Lex lex)
-// 		calls: Predicate.predicate(lex)
+
 };
 
 #endif

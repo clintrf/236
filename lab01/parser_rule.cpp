@@ -1,26 +1,31 @@
 #include "parser_rule.h"
 
-Rule::Rule(Lexer* lex){
-    this->ruleHeadPredicate = new HeadPredicate(lex);
+Rule::Rule(Lexer* lex, vector<Predicate*>* myVecPredicate,
+    vector<HeadPredicate*>* myVecHeadPredicate,
+    vector<Parameter*>* myVecParam){
+        
+    
+    this->ruleHeadPredicate = new HeadPredicate(lex, myVecParam);
+    myVecHeadPredicate->push_back(ruleHeadPredicate);
+    
     (lex)->getNextToken(COLON_DASH);
     
-    ruleVec.push_back(new Predicate(lex));
+    Predicate* p1 = new Predicate(lex, myVecParam);
+    ruleVec.push_back(p1);
+    myVecPredicate->push_back(p1);
+    
     while((lex)->tokenList.back().getTokenType() == COMMA){
         (lex)->tokenList.pop_back();
         while((lex)->tokenList.back().getTokenType() == ID){
-            
-            ruleVec.push_back(new Predicate(lex));
+            Predicate* p2 = new Predicate(lex, myVecParam);
+            ruleVec.push_back(p2);
+            myVecPredicate->push_back(p2);
         }
     }
     (lex)->getNextToken(PERIOD);
 };
 
-Rule::~Rule(){
-    delete this->ruleHeadPredicate;
-    for (unsigned int i = 0;i < ruleVec.size(); i++){
-        delete ruleVec[i];
-    }   
-}
+Rule::~Rule(){}
 
 string Rule::toString(){
     cout << "nothing in rule toString" << endl;

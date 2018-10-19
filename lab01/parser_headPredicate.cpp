@@ -1,22 +1,25 @@
 #include "parser_headPredicate.h"
 
-HeadPredicate::HeadPredicate(Lexer* lex){
+HeadPredicate::HeadPredicate(Lexer* lex, vector<Parameter*>* myVecParam){
     headPredicateId = new Id(lex);
+    myVecParam->push_back(headPredicateId);
+    
     (lex)->getNextToken(LEFT_PAREN);
-    headPredicateIdVec.push_back(new Id(lex));
+    
+    Id* i1 = new Id(lex);
+    headPredicateIdVec.push_back(i1);
+    myVecParam->push_back(i1);
+    
     while((lex)->tokenList.back().getTokenType() == COMMA){
         (lex)->tokenList.pop_back();
-        headPredicateIdVec.push_back(new Id(lex));
+        Id* i2 = new Id(lex);
+        headPredicateIdVec.push_back(i2);
+        myVecParam->push_back(i2);
     }
     (lex)->getNextToken(RIGHT_PAREN);
 }
 
-HeadPredicate::~HeadPredicate(){
-    delete headPredicateId;
-    for (unsigned int i = 0;i < headPredicateIdVec.size(); i++){
-        delete headPredicateIdVec[i];
-    }   
-}
+HeadPredicate::~HeadPredicate(){}
 
 string HeadPredicate::toString(){
     stringstream ss;
