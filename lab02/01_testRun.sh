@@ -1,0 +1,13 @@
+#g++ -g -Wall -Werror -std=c++11 *.cpp -o lab;
+#make;
+./database; 
+echo 01_test.0.txt; diff -s testKey.0.txt testOut.0.txt;
+echo 01_test.1.txt; diff -s testKey.1.txt testOut.1.txt;
+echo 01_test.2.txt; diff -s testKey.2.txt testOut.2.txt;
+echo 01_test.3.txt; diff -s testKey.3.txt testOut.3.txt;
+echo 01_test.4.txt; diff -s testKey.4.txt testOut.4.txt;
+echo 01_test.5.txt; diff -s testKey.5.txt testOut.5.txt;
+echo 01_test.6.txt; diff -s testKey.6.txt testOut.6.txt;
+echo 01_test.7.txt; diff -s testKey.7.txt testOut.7.txt;
+echo 01_test.8.txt; diff -s testKey.8.txt testOut.8.txt; 
+echo 01_test.9.txt; diff -s testKey.9.txt testOut.9.txt;

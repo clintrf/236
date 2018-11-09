@@ -1,0 +1,5 @@
+test(X,X,X)
+Relations: 
+Test => 
+  X='1'
+  X='2'

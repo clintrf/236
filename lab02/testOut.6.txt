@@ -1,0 +1,5 @@
+test(what, why, '3')
+Relations: 
+Test => 
+  what='1' why='2'
+  what='1' why='6'

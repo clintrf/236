@@ -1,0 +1,12 @@
+#g++ -g -Wall -Werror -std=c++11 *.cpp -o lab;
+#make;
+./parser 01_test.0.txt; echo 01_test.0.txt; diff -s 01_testKey.0.txt 01_testOut.0.txt;
+./parser 01_test.1.txt; echo 01_test.1.txt; diff -s 01_testKey.1.txt 01_testOut.1.txt;
+./parser 01_test.2.txt; echo 01_test.2.txt; diff -s 01_testKey.2.txt 01_testOut.2.txt;
+./parser 01_test.3.txt; echo 01_test.3.txt; diff -s 01_testKey.3.txt 01_testOut.3.txt;
+./parser 01_test.4.txt; echo 01_test.4.txt; diff -s 01_testKey.4.txt 01_testOut.4.txt;
+./parser 01_test.5.txt; echo 01_test.5.txt; diff -s 01_testKey.5.txt 01_testOut.5.txt;
+./parser 01_test.6.txt; echo 01_test.6.txt; diff -s 01_testKey.6.txt 01_testOut.6.txt;
+./parser 01_test.7.txt; echo 01_test.7.txt; diff -s 01_testKey.7.txt 01_testOut.7.txt;
+./parser 01_test.8.txt; echo 01_test.8.txt; diff -s 01_testKey.8.txt 01_testOut.8.txt; 
+./parser 01_test.9.txt; echo 01_test.9.txt; diff -s 01_testKey.9.txt 01_testOut.9.txt;

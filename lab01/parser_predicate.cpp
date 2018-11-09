@@ -44,16 +44,19 @@ Parameter* Predicate::createParameter(Lexer* lex, vector<Parameter*>* myVecParam
 Parameter* Predicate::createExpression(Lexer* lex, vector<Parameter*>* myVecParam){
     
     tokenTypeDef expressionOperator;
-
     
     (lex)->getNextToken(LEFT_PAREN);
-    this->expressionParameter1 = createParameter(lex, myVecParam);
+    expressionParameter1 = createParameter(lex, myVecParam);
+    
     expressionOperator = (lex)->tokenList.back().getTokenType();
+
     (lex)->tokenList.pop_back();
-    this->expressionParameter2 = createParameter(lex, myVecParam);
+    
+
+    expressionParameter2 = createParameter(lex, myVecParam);
     (lex)->getNextToken(RIGHT_PAREN);
     
-    this->myExp = new Expression(expressionParameter1,expressionOperator,expressionParameter2);
+    myExp = new Expression(expressionParameter1,expressionOperator,expressionParameter2);
     return this->myExp;
 }
 

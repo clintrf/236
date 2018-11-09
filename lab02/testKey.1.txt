@@ -1,0 +1,6 @@
+select with a list of indexes work
+Relations: 
+Test => 
+  F='1' S='1' T='1'
+  F='1' S='1' T='2'
+  F='2' S='2' T='2'

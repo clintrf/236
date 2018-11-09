@@ -1,0 +1,10 @@
+does rename work
+Relations: 
+Test => 
+  First='1' S='1' T='1'
+  First='1' S='1' T='2'
+  First='1' S='2' T='3'
+  First='1' S='6' T='3'
+  First='2' S='2' T='2'
+  First='5' S='2' T='7'
+  First='5' S='6' T='7'

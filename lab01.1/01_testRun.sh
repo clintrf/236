@@ -1,0 +1,17 @@
+#g++ -g -Wall -Werror -std=c++11 *.cpp -o lab;
+#make;
+./parser in0.txt; echo in0.txt; diff -s outKey0.txt 01_testOut.0.txt;
+./parser in1.txt; echo in1.txt; diff -s outKey1.txt 01_testOut.1.txt;
+./parser in2.txt; echo in2.txt; diff -s outKey2.txt 01_testOut.2.txt;
+./parser in3.txt; echo in3.txt; diff -s outKey3.txt 01_testOut.3.txt;
+./parser in21.txt; echo in21.txt; diff -s outKey21.txt 01_testOut.21.txt;
+#./parser in22.txt; echo in22.txt; diff -s outKey22.txt 01_testOut.5.txt;
+#./parser in23.txt; echo in23.txt; diff -s outKey23.txt 01_testOut.6.txt;
+#./parser in24.txt; echo in24.txt; diff -s outKey24.txt 01_testOut.7.txt;
+#./parser in25.txt; echo in25.txt; diff -s outKey25.txt 01_testOut.8.txt; 
+#./parser in26.txt; echo in26.txt; diff -s outKey26.txt 01_testOut.9.txt;
+#./parser in27.txt; echo in27.txt; diff -s outKey27.txt 01_testOut.10.txt;
+#./parser in28.txt; echo in28.txt; diff -s outKey28.txt 01_testOut.11.txt;
+#./parser in29.txt; echo in29.txt; diff -s outKey29.txt 01_testOut.12.txt;
+#./parser in61.txt; echo in61.txt; diff -s outKey61.txt 01_testOut.13.txt;
+#./parser in62.txt; echo in62.txt; diff -s outKey62.txt 01_testOut.14.txt;

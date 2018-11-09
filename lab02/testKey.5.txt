@@ -1,0 +1,5 @@
+test('5', anynum, somenum)
+Relations: 
+Test => 
+  anynum='2' somenum='7'
+  anynum='6' somenum='7'
