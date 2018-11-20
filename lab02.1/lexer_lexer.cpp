@@ -4,17 +4,15 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-#include <algorithm> 
+#include <algorithm>
 using namespace std;
 
 Lexer::Lexer(istream* fileName){
   this->inFile = fileName;
   analysisFile();
-  //pTokenList();
   reverse(tokenList.begin(),tokenList.end());
   clearComments();
 }
-
 void Lexer::analysisFile(){
   char currChar;
   while (true){
@@ -22,7 +20,7 @@ void Lexer::analysisFile(){
     if (this->inFile->eof()){
       tokenList.push_back(Token(END_OF_FILE,getCurrLineNum(),""));
       break;
-    }     
+    }
     if(isspace(currChar)){
       if(currChar == '\n'){
         currLineNum++;
@@ -85,7 +83,7 @@ void Lexer::tagCase(){
   if (this->inFile->peek() == '|') {
     this->inFile->get();
     tokenList.push_back(Token(gettokenTypeDef(COMMENT),getCurrLineNum(), this->multi_line_comment()));
-  } 
+  }
   else {
     tokenList.push_back(Token(COMMENT,getCurrLineNum(), this->single_line_comment()));
   }
@@ -103,7 +101,7 @@ void Lexer::defaultIfCase(char currChar){
     string undefinedString = "";
     undefinedString += currChar;
     tokenList.push_back(Token(UNDEFINED,getCurrLineNum(), undefinedString ));
-  }  
+  }
 }
 
 
@@ -117,14 +115,6 @@ string Lexer::print(){
   sTemp << "Total Tokens = " << tokenList.size();
   return sTemp.str();
 }
-// string Lexer::printP(){
-//   stringstream sTemp;
-//   for(int i = 0; i < this->tokenP.size(); i++){
-//       sTemp << "(" << typeToString(tokenP[i]->tokenType) << ",\"" << tokenP[i]->tokenValue << "\"," << tokenP[i]->tokenLineNum << ")" << std::endl;
-//   }
-//   sTemp << "Total Tokens = " << tokenP.size();
-//   return sTemp.str();
-// }
 
 string Lexer::typeToString(tokenTypeDef typeDef){
   string stringType;
@@ -175,7 +165,7 @@ string Lexer::multi_line_comment(){
   string startString = "#|";
   char currChar;
   while (true){
-    
+
     currChar = this->inFile->get();
     if(this->inFile->eof()){
       setEofFlag();
@@ -194,24 +184,24 @@ string Lexer::multi_line_comment(){
     }
     startString += currChar;
   }
-}    
-string Lexer::identifierString(){  
+}
+string Lexer::identifierString(){
   string startString = "";
   while (isalpha(this->inFile->peek()) || isalnum(this->inFile->peek())) {
     startString += this->inFile->get();
   }
-  
+
   return startString;
 }
 tokenTypeDef Lexer::identifierType(string tempString){
   if (this->keywords.find(tempString) != this->keywords.end()) {
     return keywords[tempString];
-  } 
+  }
   else {
     return ID;
   }
 }
-string Lexer::stringInput(){ 
+string Lexer::stringInput(){
   string startString = "'";
   char currChar;
   while(true){
@@ -271,25 +261,15 @@ vector<Token> Lexer::getTokenList(){
   return tokenList;
 }
 
-// vector<Token*> Lexer::pTokenList(){
-//   for(int i =0; i < tokenList.size(); i++){
-//     if(tokenList[i].getTokenType() == COMMENT){
-//       i++;
-//     }
-//     tokenP.push_back(new Token(tokenList[i]));
-//   }
-//   return tokenP;
-// }
-
 Token Lexer::getNextToken(tokenTypeDef tokenType){
   Token result = tokenList.back();
   tokenTypeDef resultType = result.getTokenType();
   if((resultType == END_OF_FILE && tokenType != END_OF_FILE) || resultType != tokenType){
-  
+
     throw result;
   }
 
-  tokenList.pop_back(); 
+  tokenList.pop_back();
   return result;
 }
 
