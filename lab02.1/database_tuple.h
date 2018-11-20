@@ -1,8 +1,12 @@
-#ifndef DATABASE_TUPLE_H
-#define DATABASE_TUPLE_H
+/*
+ * tuple.h
+ *
+ *  Created on: Jul 22, 2015
+ *      Author: jacobmb
+ */
 
-#include <iostream>
-#include <set>
+#ifndef DATABASE_TUPLE_H_
+#define DATABASE_TUPLE_H_
 
 #include <vector>
 #include <string>
@@ -11,15 +15,16 @@
 using namespace std;
 
 class Tuple: public vector<string> {
-    public:
-        string const toString(){
-            stringstream ss;
-            for (unsigned int i = 0; i<this->size(); i++){
-                ss << this->at(i) << ' ';
-            }
-            ss << endl;
-            return ss.str();
-        };
+public:
+	string const toString() {
+		stringstream ss;
+		for (unsigned int i = 0; i<this->size(); i++) {
+			ss << this->at(i) << ' ';
+		}
+		ss << endl;
+		return ss.str();
+	}
+
 };
 
-#endif 
+#endif /* TUPLE_H_ */
